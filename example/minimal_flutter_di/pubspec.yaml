@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   force_inject:
-    path: ../..
+    path: ../../packages/force_inject
 
 flutter:
   uses-material-design: true

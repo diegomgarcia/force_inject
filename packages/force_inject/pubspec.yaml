@@ -1,0 +1,23 @@
+name: force_inject
+description: A zero-dependency DI container for Dart, inspired by .NET Core. This is the Way.
+version: 0.2.2
+repository: https://github.com/diegomgarcia/force_inject
+homepage: https://github.com/diegomgarcia/force_inject
+resolution: workspace
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  meta: ^1.15.0
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
+  web:
+
+dev_dependencies:
+  test: ^1.24.0

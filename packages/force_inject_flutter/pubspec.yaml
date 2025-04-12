@@ -1,0 +1,19 @@
+name: force_inject_flutter
+description: Flutter integration for ForceInject — DI widgets and helpers built for screen-based scope and clean architecture.
+version: 0.1.0
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  force_inject:
+    path: ../force_inject
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
