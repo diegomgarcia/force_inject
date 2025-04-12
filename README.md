@@ -3,7 +3,7 @@
 [![publisher: diegogarcia.ca](https://img.shields.io/badge/publisher-diegogarcia.ca-blue)](https://pub.dev/publishers/diegogarcia.ca)
 
 
-🛠️ A lightweight, zero-dependency Dependency Injection (DI) container for Dart.  
+🛠️ A lightweight, zero-runtime-dependency Dependency Injection (DI) container for Dart.  
 🌌 Inspired by .NET Core and powered by the Force.  
 **This is the Way.**
 
@@ -17,6 +17,16 @@
 - Inspired by C#/.NET Core DI patterns
 - Lightweight, test-friendly, and easy to integrate
 
+## ⚙️ Dependencies
+
+ForceInject is designed to have **no runtime dependencies**.
+
+We use the Dart team's official [`meta`](https://pub.dev/packages/meta) package only for static annotations like `@protected` and `@visibleForTesting`.
+
+This ensures:
+- ✅ No runtime or platform bloat
+- ✅ Full IDE and analyzer support
+- ✅ Maximum compatibility with Flutter, backend, and CLI
 
 ## 🚀 Getting Started
 

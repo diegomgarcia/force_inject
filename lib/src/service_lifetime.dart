@@ -1,5 +1,1 @@
-enum ServiceLifetime {
-  singleton,
-  transient,
-  scoped
-}
+enum ServiceLifetime { singleton, transient, scoped }
