@@ -1,10 +1,12 @@
 # 🔌 ForceInject
+[![pub package](https://img.shields.io/pub/v/force_inject.svg)](https://pub.dev/packages/force_inject)
+[![publisher: diegogarcia.ca](https://img.shields.io/badge/publisher-diegogarcia.ca-blue)](https://pub.dev/publishers/diegogarcia.ca)
+
 
 🛠️ A lightweight, zero-dependency Dependency Injection (DI) container for Dart.  
 🌌 Inspired by .NET Core and powered by the Force.  
 **This is the Way.**
 
----
 
 ## ✨ Features
 
@@ -15,7 +17,6 @@
 - Inspired by C#/.NET Core DI patterns
 - Lightweight, test-friendly, and easy to integrate
 
----
 
 ## 🚀 Getting Started
 
@@ -47,7 +48,6 @@ final userService = provider.get<UserService>();
 userService.sayHello(); // [LOG]: Hello from UserService!
 ```
 
----
 
 ## ⚙️ Lifetimes
 
@@ -56,7 +56,6 @@ userService.sayHello(); // [LOG]: Hello from UserService!
 | `singleton` | One shared instance across the application |
 | `transient` | A new instance is created every time       |
 
----
 
 ## 📦 Why ForceInject?
 
@@ -66,13 +65,21 @@ Dart is an elegant language, but backend structure is still evolving.
 No magic. No mirrors. Just clean, focused architecture.  
 💬 *"When your services are confused, inject them you must."* – Yodart
 
----
 
 ## 🧪 Examples & Playground
 
 Check out the `example/` folder for more real-world setups.
 
----
+
+## Support me ([@diegomgarcia](https://github.com/diegomgarcia)) with Patreon
+
+[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/dmgarcia)
+
+Or make a donation buying me a coffee:
+
+[![Buy Me A Coffee](https://user-images.githubusercontent.com/835641/60540201-fcd7fa00-9ce4-11e9-87ec-1e98568e9f58.png)](https://www.buymeacoffee.com/dmgarcia)
+
+You can also show support by showing on your repository that you use this lib on it with a direct link to it.
 
 ## 📜 License
 
