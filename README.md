@@ -7,11 +7,10 @@
 🌌 Inspired by .NET Core and powered by the Force.  
 **This is the Way.**
 
-
 ## ✨ Features
 
 - Constructor-based dependency injection
-- Support for `singleton` and `transient` lifetimes
+- Support for `singleton`, `transient`, and `scoped lifetimes
 - Zero dependencies — pure Dart
 - No code generation, no mirrors
 - Inspired by C#/.NET Core DI patterns
@@ -58,6 +57,13 @@ final userService = provider.get<UserService>();
 userService.sayHello(); // [LOG]: Hello from UserService!
 ```
 
+### Need a per-screen or per-request services? Create a `ServiceScope`:
+
+```dart
+final scope = provider.createScope();
+final viewModel = scope.get<MyViewModel>();
+scope.dispose(); // clean up when done
+```
 
 ## ⚙️ Lifetimes
 
@@ -65,6 +71,7 @@ userService.sayHello(); // [LOG]: Hello from UserService!
 |-------------|--------------------------------------------|
 | `singleton` | One shared instance across the application |
 | `transient` | A new instance is created every time       |
+| `scoped`    | One instance per ServiceScope — ideal for screen/request lifetimes |
 
 
 ## 📦 Why ForceInject?
@@ -76,10 +83,24 @@ No magic. No mirrors. Just clean, focused architecture.
 💬 *"When your services are confused, inject them you must."* – Yodart
 
 
-## 🧪 Examples & Playground
+## 🧪 Examples
 
-Check out the `example/` folder for more real-world setups.
+This package includes two complete examples you can explore:
 
+- 🧱 [`minimal_dart_di`](https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_dart_di)  
+  A simple Dart CLI app using ForceInject with singleton and transient services.
+
+- 📱 [`minimal_flutter_di`](https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_flutter_di)  
+  A clean Flutter app using scoped DI and a `ValueNotifier`-based ViewModel.
+
+To run the Flutter example:
+```bash
+cd example/minimal_flutter_di
+flutter create .
+flutter pub get
+flutter run
+```
+**Read the README.md inside the minimal_flutter_di project for more details.**
 
 ## Support me ([@diegomgarcia](https://github.com/diegomgarcia)) with Patreon
 
