@@ -1,5 +1,4 @@
 import 'service_provider.dart';
-import 'service_descriptor.dart';
 import 'service_lifetime.dart';
 
 class ServiceScope extends ServiceProvider {
