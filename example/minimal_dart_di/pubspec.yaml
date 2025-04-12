@@ -1,0 +1,11 @@
+name: minimal_dart_di
+publish_to: none
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  force_inject:
+    path: ../../packages/force_inject
+
+resolution: workspace

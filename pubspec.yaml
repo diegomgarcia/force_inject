@@ -5,5 +5,8 @@ environment:
   sdk: ">=3.6.0 <4.0.0"
 
 workspace:
-    - packages/force_inject
-    - packages/force_inject_flutter
+  - packages/force_inject
+  - packages/force_inject_flutter
+  - example/minimal_flutter_di
+  - example/minimal_dart_di
+  - example/scoped_widget_flutter_di
