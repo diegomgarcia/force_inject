@@ -1,6 +1,6 @@
 // Add this into your real project
 // import 'package:force_inject/force_inject.dart';
-import '../lib/force_inject.dart';
+import '../../lib/force_inject.dart';
 
 abstract class ILogger {
   void log(String msg);

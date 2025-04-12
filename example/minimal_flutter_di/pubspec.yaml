@@ -1,0 +1,15 @@
+name: force_inject_example
+description: Example using ForceInject with Flutter
+publish_to: "none"
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  force_inject:
+    path: ../..
+
+flutter:
+  uses-material-design: true

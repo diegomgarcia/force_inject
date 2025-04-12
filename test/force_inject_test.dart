@@ -78,5 +78,35 @@ void main() {
       final logger = provider.get<Logger>() as ConsoleLogger;
       expect(logger.lastMessage, equals("Hello, test world!"));
     });
+
+    test('should create and resolve scoped instances correctly', () {
+      final services = ServiceCollection();
+
+      services.addScoped<Logger, ConsoleLogger>();
+      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+
+      final provider = services.buildServiceProvider();
+
+      final scope1 = provider.createScope();
+      final scope2 = provider.createScope();
+
+      final logger1 = scope1.get<Logger>();
+      final logger2 = scope1.get<Logger>();
+      final logger3 = scope2.get<Logger>();
+
+      expect(logger1, same(logger2)); // Same instance in scope1
+      expect(logger1, isNot(same(logger3))); // Different from scope2
+    });
+
+    test('should throw if scoped service is resolved from root provider', () {
+      final services = ServiceCollection();
+
+      services.addScoped<Logger, ConsoleLogger>();
+      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+
+      final provider = services.buildServiceProvider();
+
+      expect(() => provider.get<Logger>(), throwsException);
+    });
   });
 }

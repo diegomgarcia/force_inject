@@ -1,33 +1,45 @@
 import 'service_descriptor.dart';
 import 'service_lifetime.dart';
+import 'service_scope.dart';
 import 'internal_types.dart';
+import 'package:meta/meta.dart';
 
 class ServiceProvider {
-  final Map<Type, ServiceDescriptor> _descriptors;
+  @protected
+  final Map<Type, ServiceDescriptor> descriptors;
+
   final Map<Type, Object> _singletons = {};
 
   ServiceProvider(List<ServiceDescriptor> descriptors)
-      : _descriptors = {for (var d in descriptors) d.type: d};
+      : descriptors = {for (var d in descriptors) d.type: d};
+
+  @protected
+  ServiceProvider.internal(this.descriptors); // for scoped use
 
   T get<T>() {
-    final descriptor = _descriptors[T];
+    final descriptor = descriptors[T];
     if (descriptor == null) {
       throw Exception("Service of type $T is not registered");
+    }
+
+    if (descriptor.lifetime == ServiceLifetime.scoped) {
+      throw Exception("Service of type $T has a scoped lifetime and must be resolved from a ServiceScope.");
     }
 
     if (descriptor.lifetime == ServiceLifetime.singleton) {
       if (_singletons.containsKey(T)) {
         return _singletons[T] as T;
       }
-      final instance = _createInstance(descriptor);
+      final instance = createInstance(descriptor);
       _singletons[T] = instance;
       return instance as T;
     }
 
-    return _createInstance(descriptor) as T;
+    return createInstance(descriptor) as T;
   }
 
-  Object _createInstance(ServiceDescriptor descriptor) {
+  @protected
+  Object createInstance(ServiceDescriptor descriptor) {
     if (descriptor.instance != null) {
       return descriptor.instance!;
     }
@@ -46,7 +58,7 @@ class ServiceProvider {
   }
 
   Object getByType(Type type) {
-    final descriptor = _descriptors[type];
+    final descriptor = descriptors[type];
     if (descriptor == null) {
       throw Exception("Type $type is not registered");
     }
@@ -75,6 +87,9 @@ class ServiceProvider {
     return instance;
   }
 
+  ServiceScope createScope() {
+    return ServiceScope(this);
+  }
 
   // === Constructor registration system ===
 

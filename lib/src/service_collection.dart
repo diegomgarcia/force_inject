@@ -30,6 +30,14 @@ class ServiceCollection {
     ));
   }
 
+  void addScoped<TService, TImplementation extends TService>() {
+    _descriptors.add(ServiceDescriptor(
+      type: TService,
+      implementationType: TImplementation,
+      lifetime: ServiceLifetime.scoped,
+    ));
+  }
+
   ServiceProvider buildServiceProvider() {
     return ServiceProvider(_descriptors);
   }
