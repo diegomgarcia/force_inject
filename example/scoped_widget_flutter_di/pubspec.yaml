@@ -1,0 +1,17 @@
+name: scoped_widget_flutter_di
+description: Flutter example using ForceInject with ForceScopeWidget and ForceViewModelBuilder
+publish_to: "none"
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  force_inject:
+    path: ../../packages/force_inject
+  force_inject_flutter:
+    path: ../../packages/force_inject_flutter
+
+flutter:
+  uses-material-design: true

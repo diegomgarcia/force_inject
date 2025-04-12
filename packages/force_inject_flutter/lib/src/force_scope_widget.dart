@@ -1,35 +1,62 @@
-
 import 'package:flutter/widgets.dart';
 import 'package:force_inject/force_inject.dart';
 
-/// A placeholder widget that will manage a scoped lifetime in the future.
+/// Provides a ServiceScope to its widget subtree and disposes it automatically.
+///
+/// You must provide a root ServiceProvider to create the scope from.
 class ForceScopeWidget extends StatefulWidget {
-  final WidgetBuilder builder;
+  final ServiceProvider provider;
+  final Widget child;
 
-  const ForceScopeWidget({super.key, required this.builder});
+  const ForceScopeWidget({
+    super.key,
+    required this.provider,
+    required this.child,
+  });
 
   @override
   State<ForceScopeWidget> createState() => _ForceScopeWidgetState();
+
+  /// Access the current [ServiceScope] from the widget [context].
+  static ServiceScope of(BuildContext context) {
+    final inherited = context.dependOnInheritedWidgetOfExactType<_ForceScopeProvider>();
+    assert(inherited != null, 'No ForceScopeWidget found in context');
+    return inherited!.scope;
+  }
 }
 
 class _ForceScopeWidgetState extends State<ForceScopeWidget> {
-  late final ServiceScope scope;
+  late final ServiceScope _scope;
 
   @override
   void initState() {
     super.initState();
-    // This will be injected in the future with a global or parent provider
-    throw UnimplementedError('ForceScopeWidget must receive a provider');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return widget.builder(context);
+    _scope = widget.provider.createScope();
   }
 
   @override
   void dispose() {
-    // scope.dispose(); ← we'll hook this up later
+    _scope.dispose();
     super.dispose();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return _ForceScopeProvider(
+      scope: _scope,
+      child: widget.child,
+    );
+  }
+}
+
+class _ForceScopeProvider extends InheritedWidget {
+  final ServiceScope scope;
+
+  const _ForceScopeProvider({
+    required this.scope,
+    required super.child,
+  });
+
+  @override
+  bool updateShouldNotify(_ForceScopeProvider oldWidget) => false;
 }
