@@ -6,7 +6,7 @@ final services = ServiceCollection()
 
 void setupDI() {
   ServiceProvider.registerConstructor<CounterViewModel>(
-        () => CounterViewModel(),
+    () => CounterViewModel(),
     [],
   );
 }

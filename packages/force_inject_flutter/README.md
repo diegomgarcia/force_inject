@@ -45,6 +45,14 @@ ForceInject and its Flutter integration work without:
 
 Use pure constructor-based registration — just like .NET Core DI.
 
+## Support me ([@diegomgarcia](https://github.com/diegomgarcia)) with Patreon
+
+[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/dmgarcia)
+
+Or make a donation buying me a coffee:
+
+[![Buy Me A Coffee](https://user-images.githubusercontent.com/835641/60540201-fcd7fa00-9ce4-11e9-87ec-1e98568e9f58.png)](https://www.buymeacoffee.com/dmgarcia)
+
 ## 📜 License
 
 MIT — use it freely in commercial or personal projects.

@@ -29,9 +29,10 @@ void main() {
       services.addSingleton<Logger, ConsoleLogger>();
       services.addTransient<Greeter, Greeter>();
 
-      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+      ServiceProvider.registerConstructor<ConsoleLogger>(
+          () => ConsoleLogger(), []);
       ServiceProvider.registerConstructor<Greeter>(
-            (Logger logger) => Greeter(logger),
+        (Logger logger) => Greeter(logger),
         [Logger],
       );
 
@@ -48,7 +49,8 @@ void main() {
 
       services.addTransient<Logger, ConsoleLogger>();
 
-      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+      ServiceProvider.registerConstructor<ConsoleLogger>(
+          () => ConsoleLogger(), []);
 
       final provider = services.buildServiceProvider();
 
@@ -64,9 +66,10 @@ void main() {
       services.addSingleton<Logger, ConsoleLogger>();
       services.addTransient<Greeter, Greeter>();
 
-      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+      ServiceProvider.registerConstructor<ConsoleLogger>(
+          () => ConsoleLogger(), []);
       ServiceProvider.registerConstructor<Greeter>(
-            (Logger logger) => Greeter(logger),
+        (Logger logger) => Greeter(logger),
         [Logger],
       );
 
@@ -83,7 +86,8 @@ void main() {
       final services = ServiceCollection();
 
       services.addScoped<Logger, ConsoleLogger>();
-      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+      ServiceProvider.registerConstructor<ConsoleLogger>(
+          () => ConsoleLogger(), []);
 
       final provider = services.buildServiceProvider();
 
@@ -102,7 +106,8 @@ void main() {
       final services = ServiceCollection();
 
       services.addScoped<Logger, ConsoleLogger>();
-      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+      ServiceProvider.registerConstructor<ConsoleLogger>(
+          () => ConsoleLogger(), []);
 
       final provider = services.buildServiceProvider();
 

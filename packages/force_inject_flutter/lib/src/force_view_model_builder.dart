@@ -15,7 +15,8 @@ class ForceViewModelBuilder<T> extends StatefulWidget {
   });
 
   @override
-  State<ForceViewModelBuilder<T>> createState() => _ForceViewModelBuilderState<T>();
+  State<ForceViewModelBuilder<T>> createState() =>
+      _ForceViewModelBuilderState<T>();
 }
 
 class _ForceViewModelBuilderState<T> extends State<ForceViewModelBuilder<T>> {

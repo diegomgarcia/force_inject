@@ -30,7 +30,7 @@ void main() {
 
   ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
   ServiceProvider.registerConstructor<UserService>(
-        (ILogger logger) => UserService(logger),
+    (ILogger logger) => UserService(logger),
     [ILogger],
   );
 

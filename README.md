@@ -6,10 +6,10 @@ A modular, zero-runtime-dependency Dependency Injection (DI) system for Dart and
 
 ## 📦 Packages
 
-| Package | Description |
-|--------|-------------|
-| [`force_inject`](./packages/force_inject) | Core DI container with singleton, transient, and scoped lifetimes. Zero dependencies, pure Dart. |
-| [`forceinject_flutter`](./packages/forceinject_flutter) *(coming soon)* | Flutter integration helpers like `ForceScopeWidget`, `ForceViewModelBuilder<T>`, and more. |
+| Package                                                                  | Description |
+|--------------------------------------------------------------------------|-------------|
+| [`force_inject`](./packages/force_inject)                                | Core DI container with singleton, transient, and scoped lifetimes. Zero dependencies, pure Dart. |
+| [`force_inject_flutter`](./packages/forceinject_flutter) | Flutter integration helpers like `ForceScopeWidget`, `ForceViewModelBuilder<T>`, and more. |
 
 ## 🚀 Examples
 
@@ -20,6 +20,10 @@ Explore real-world usage of ForceInject in Dart and Flutter:
 
 - 📱 [`minimal_flutter_di`](./example/minimal_flutter_di)  
   A Flutter app using scoped DI and a ViewModel with `ValueNotifier`.
+
+- 📱 [`scoped_widget_flutter_di`](./example/scoped_widget_flutter_di)  
+  A Flutter app using `ForceScopeWidget` and `ForceViewModelBuilder` DI and a ViewModel.
+
 
 > To run Flutter examples, remember to generate platform folders first:
 >
@@ -50,11 +54,13 @@ This project is open to contributions — especially companion packages like:
 - `forceinject_bloc`
 - `forceinject_codegen`
 
-You can also support me here:
+## Support me ([@diegomgarcia](https://github.com/diegomgarcia)) with Patreon
+
+[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/dmgarcia)
+
+Or make a donation buying me a coffee:
 
 [![Buy Me A Coffee](https://user-images.githubusercontent.com/835641/60540201-fcd7fa00-9ce4-11e9-87ec-1e98568e9f58.png)](https://www.buymeacoffee.com/dmgarcia)
-
-[Become a Patron →](https://www.patreon.com/dmgarcia)
 
 ## 📜 License
 

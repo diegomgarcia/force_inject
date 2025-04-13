@@ -23,7 +23,8 @@ class ServiceProvider {
     }
 
     if (descriptor.lifetime == ServiceLifetime.scoped) {
-      throw Exception("Service of type $T has a scoped lifetime and must be resolved from a ServiceScope.");
+      throw Exception(
+          "Service of type $T has a scoped lifetime and must be resolved from a ServiceScope.");
     }
 
     if (descriptor.lifetime == ServiceLifetime.singleton) {
@@ -95,7 +96,8 @@ class ServiceProvider {
 
   static final Map<Type, ConstructorBinding> _typeConstructors = {};
 
-  static void registerConstructor<T>(Function constructor, List<Type> paramTypes) {
+  static void registerConstructor<T>(
+      Function constructor, List<Type> paramTypes) {
     _typeConstructors[T] = ConstructorBinding(constructor, paramTypes);
   }
 }

@@ -19,7 +19,8 @@ class ForceScopeWidget extends StatefulWidget {
 
   /// Access the current [ServiceScope] from the widget [context].
   static ServiceScope of(BuildContext context) {
-    final inherited = context.dependOnInheritedWidgetOfExactType<_ForceScopeProvider>();
+    final inherited =
+        context.dependOnInheritedWidgetOfExactType<_ForceScopeProvider>();
     assert(inherited != null, 'No ForceScopeWidget found in context');
     return inherited!.scope;
   }
