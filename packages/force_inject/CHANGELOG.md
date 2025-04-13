@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3
+
+- README.md improvements
+
 ## 0.2.2
 
 - Introduced support to scoped lifetime
