@@ -6,10 +6,10 @@ A modular, zero-runtime-dependency Dependency Injection (DI) system for Dart and
 
 ## 📦 Packages
 
-| Package                                                                  | Description |
-|--------------------------------------------------------------------------|-------------|
-| [`force_inject`](./packages/force_inject)                                | Core DI container with singleton, transient, and scoped lifetimes. Zero dependencies, pure Dart. |
-| [`force_inject_flutter`](./packages/forceinject_flutter) | Flutter integration helpers like `ForceScopeWidget`, `ForceViewModelBuilder<T>`, and more. |
+| Package                                                   | Description |
+|-----------------------------------------------------------|-------------|
+| [`force_inject`](./packages/force_inject)                 | Core DI container with singleton, transient, and scoped lifetimes. Zero dependencies, pure Dart. |
+| [`force_inject_flutter`](./packages/force_inject_flutter) | Flutter integration helpers like `ForceScopeWidget`, `ForceViewModelBuilder<T>`, and more. |
 
 ## 🚀 Examples
 

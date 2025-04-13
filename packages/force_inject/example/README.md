@@ -5,6 +5,7 @@ This is a minimal Dart console example showing how to use the [`force_inject`](h
 ### 📂 Full Example on GitHub
 
 👉 https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_dart_di
+
 👉 https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_flutter_di
 
 ### 🚀 To run it:
