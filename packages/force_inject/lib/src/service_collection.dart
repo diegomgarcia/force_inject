@@ -5,15 +5,23 @@ import 'service_lifetime.dart';
 class ServiceCollection {
   final List<ServiceDescriptor> _descriptors = [];
 
-  void addSingleton<TService, TImplementation extends TService>() {
+  void addSingleton<TService, TImplementation extends TService>({
+    Object? name,
+    Object? tag,
+  }) {
     _descriptors.add(ServiceDescriptor(
       type: TService,
       implementationType: TImplementation,
       lifetime: ServiceLifetime.singleton,
+      name: name,
+      tag: tag,
     ));
   }
 
-  void addTransient<TService, TImplementation extends TService>() {
+  void addTransient<TService, TImplementation extends TService>({
+    Object? name,
+    Object? tag,
+  }) {
     _descriptors.add(ServiceDescriptor(
       type: TService,
       implementationType: TImplementation,
@@ -30,7 +38,10 @@ class ServiceCollection {
     ));
   }
 
-  void addScoped<TService, TImplementation extends TService>() {
+  void addScoped<TService, TImplementation extends TService>({
+    Object? name,
+    Object? tag,
+  }) {
     _descriptors.add(ServiceDescriptor(
       type: TService,
       implementationType: TImplementation,

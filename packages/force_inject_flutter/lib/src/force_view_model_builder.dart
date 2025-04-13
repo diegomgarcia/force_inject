@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'force_initializable_view_model.dart';
 import 'force_scope_widget.dart';
 
 /// A widget that injects a ViewModel from the current ForceScope and rebuilds
@@ -29,6 +30,14 @@ class _ForceViewModelBuilderState<T> extends State<ForceViewModelBuilder<T>> {
     super.didChangeDependencies();
     if (!_initialized) {
       _viewModel = ForceScopeWidget.of(context).get<T>();
+
+      // Defer ViewModel init until after first frame
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_viewModel is ForceInitializableViewModel) {
+          (_viewModel as ForceInitializableViewModel).init(context);
+        }
+      });
+
       _initialized = true;
     }
   }

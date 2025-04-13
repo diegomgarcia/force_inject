@@ -10,3 +10,6 @@ workspace:
   - example/minimal_flutter_di
   - example/minimal_dart_di
   - example/scoped_widget_flutter_di
+  - example/lifecycle_hooks_di
+  - example/viewmodel_lifecycle_flutter_di
+

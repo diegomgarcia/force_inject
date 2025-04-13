@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:force_inject/force_inject.dart';
 import 'di/service_config.dart';
 import 'screens/home_screen.dart';
 

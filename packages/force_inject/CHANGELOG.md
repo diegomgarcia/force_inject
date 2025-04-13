@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.0
+
+✨ Features
+- Support for **named** and **tagged** service resolution:
+    - `get<T>(name: ...)`
+    - `getTagged<T>(tag)`
+    - `getAll<T>()` to resolve multiple implementations of a type
+
+- Scoped DI now includes **auto-disposal**:
+    - If a service implements `Disposable`, it’s disposed when the `ServiceScope` is destroyed
+
+🧰 Internals
+- Added `Disposable` interface
+- Extended `ServiceProvider` and `ServiceScope` to track tagged/named instances
+- Improved internal resolution logic with `_resolveDescriptor` method
+
 ## 0.2.3
 
 - README.md improvements

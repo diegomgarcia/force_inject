@@ -1,0 +1,19 @@
+name: viewmodel_lifecycle_flutter_di
+description: Demonstrates ForceInject ViewModel lifecycle integration in Flutter.
+publish_to: none
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  force_inject:
+    path: ../../packages/force_inject
+  force_inject_flutter:
+    path: ../../packages/force_inject_flutter
+
+flutter:
+  uses-material-design: true
+
+resolution: workspace

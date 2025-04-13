@@ -1,3 +1,4 @@
+import 'initializable.dart';
 import 'service_descriptor.dart';
 import 'service_lifetime.dart';
 import 'service_scope.dart';
@@ -16,7 +17,15 @@ class ServiceProvider {
   @protected
   ServiceProvider.internal(this.descriptors); // for scoped use
 
-  T get<T>() {
+  T get<T>({Object? name}) {
+    if (name != null) {
+      final match = descriptors.values.firstWhere(
+            (d) => d.type == T && d.name == name,
+        orElse: () => throw Exception("No named service '$name' for type $T."),
+      );
+      return _resolveDescriptor<T>(match);
+    }
+
     final descriptor = descriptors[T];
     if (descriptor == null) {
       throw Exception("Service of type $T is not registered");
@@ -39,6 +48,36 @@ class ServiceProvider {
     return createInstance(descriptor) as T;
   }
 
+  T getTagged<T>(Object tag) {
+    final match = descriptors.values.firstWhere(
+          (d) => d.type == T && d.tag == tag,
+      orElse: () => throw Exception("No tagged service for type $T with tag $tag."),
+    );
+    return _resolveDescriptor<T>(match);
+  }
+
+  List<T> getAll<T>() {
+    final matches = descriptors.values.where((d) => d.type == T);
+    if (matches.isEmpty) {
+      throw Exception("No services registered for type $T");
+    }
+
+    return matches.map((d) => _resolveDescriptor<T>(d)).toList();
+  }
+
+  T _resolveDescriptor<T>(ServiceDescriptor descriptor) {
+    if (descriptor.lifetime == ServiceLifetime.singleton) {
+      if (_singletons.containsKey(descriptor)) {
+        return _singletons[descriptor] as T;
+      }
+      final instance = createInstance(descriptor);
+      _singletons[descriptor.type] = instance;
+      return instance as T;
+    }
+
+    return createInstance(descriptor) as T;
+  }
+
   @protected
   Object createInstance(ServiceDescriptor descriptor) {
     if (descriptor.instance != null) {
@@ -55,7 +94,13 @@ class ServiceProvider {
       return getByType(paramType);
     }).toList();
 
-    return Function.apply(constructor.constructor, parameters);
+    final instance = Function.apply(constructor.constructor, parameters);
+
+    if (instance is Initializable) {
+      instance.init();
+    }
+
+    return instance;
   }
 
   Object getByType(Type type) {
@@ -69,17 +114,7 @@ class ServiceProvider {
       return _singletons[type]!;
     }
 
-    final implType = descriptor.implementationType;
-    final constructor = _typeConstructors[implType];
-    if (constructor == null) {
-      throw Exception("No constructor registered for $implType");
-    }
-
-    final parameters = constructor.parameters.map((param) {
-      return getByType(param);
-    }).toList();
-
-    final instance = Function.apply(constructor.constructor, parameters);
+    final instance = createInstance(descriptor);
 
     if (descriptor.lifetime == ServiceLifetime.singleton) {
       _singletons[type] = instance;

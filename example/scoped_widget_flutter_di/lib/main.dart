@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:force_inject/force_inject.dart';
 import 'package:force_inject_flutter/force_inject_flutter.dart';
 import 'di/service_config.dart';
 import 'screens/counter_screen.dart';

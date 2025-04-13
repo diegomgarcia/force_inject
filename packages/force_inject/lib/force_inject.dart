@@ -5,3 +5,6 @@ export 'src/service_descriptor.dart';
 export 'src/service_collection.dart';
 export 'src/service_provider.dart';
 export 'src/service_scope.dart';
+export 'src/disposable.dart';
+export 'src/initializable.dart';
+

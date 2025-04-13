@@ -9,6 +9,27 @@ Flutter integration for [ForceInject](https://pub.dev/packages/force_inject) —
 - No state management dependency — works with any pattern (MVVM, Clean, Redux, etc.)
 - Pure Dart and Flutter — lightweight and testable
 
+## 🔁 ViewModel Lifecycle Support
+
+ViewModels injected via `ForceViewModelBuilder` can now:
+
+- Implement `ForceInitializableViewModel` to run `init(BuildContext context)` after mount
+- Implement `Disposable` to be cleaned up automatically when the widget tree is disposed
+
+```dart
+class MyViewModel implements ForceInitializableViewModel, Disposable {
+  @override
+  void init(BuildContext context) {
+    print('Initialized with: ${Localizations.localeOf(context)}');
+  }
+
+  @override
+  void dispose() {
+    print('Cleaned up');
+  }
+}
+```
+
 ## 🧪 Example
 
 Check out the [`scoped_widget_flutter_di`](../../example/scoped_widget_flutter_di) example for a complete working app.
