@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0
+
+✨ Features
+- Added support for **asynchronous ViewModel lifecycle** via `ForceAsyncInitializableViewModel`
+  - Automatically calls `initAsync(BuildContext context)` after widget build
+  - Integrates into `ForceViewModelBuilder` with optional `loadingBuilder`, `errorBuilder`, `onInitComplete`, and `onInitError`
+
+🧪 Example Added:
+- `async_viewmodel_flutter_di`: demonstrates loading state, error fallback, and async injection with scope and disposal
+
+🔧 Enhancements:
+- `ForceViewModelBuilder` now supports sync + async init detection
+- Maintains full support for `ValueListenable` and `Disposable`
+
 ## 0.2.0
 
 ✨ Features

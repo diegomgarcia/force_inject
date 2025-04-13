@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'force_async_initializable_view_model.dart';
 import 'force_initializable_view_model.dart';
 import 'force_scope_widget.dart';
 
@@ -7,12 +8,20 @@ import 'force_scope_widget.dart';
 /// when the ViewModel notifies (if it's a ValueListenable).
 class ForceViewModelBuilder<T> extends StatefulWidget {
   final Widget Function(BuildContext context, T viewModel) builder;
+  final Widget Function(BuildContext context)? loadingBuilder;
+  final Widget Function(BuildContext context, Object error)? errorBuilder;
+  final void Function(T viewModel)? onInitComplete;
+  final void Function(Object error)? onInitError;
   final void Function(T viewModel)? onDispose;
 
   const ForceViewModelBuilder({
     super.key,
     required this.builder,
     this.onDispose,
+    this.onInitComplete,
+    this.onInitError,
+    this.loadingBuilder,
+    this.errorBuilder,
   });
 
   @override
@@ -22,43 +31,72 @@ class ForceViewModelBuilder<T> extends StatefulWidget {
 
 class _ForceViewModelBuilderState<T> extends State<ForceViewModelBuilder<T>> {
   late final T _viewModel;
-
+  Object? _error;
   bool _initialized = false;
+  bool _loading = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_initialized) {
-      _viewModel = ForceScopeWidget.of(context).get<T>();
 
-      // Defer ViewModel init until after first frame
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (_viewModel is ForceInitializableViewModel) {
-          (_viewModel as ForceInitializableViewModel).init(context);
-        }
+    if (_initialized) return;
+
+    _viewModel = ForceScopeWidget.of(context).get<T>();
+
+    final vm = _viewModel!;
+    _initialized = true;
+
+    if (vm is ForceInitializableViewModel) {
+      vm.init(context);
+    }
+
+    if (vm is ForceAsyncInitializableViewModel) {
+      _loading = true;
+
+      vm.initAsync(context).then((_) {
+        if (!mounted) return;
+        setState(() {
+          _loading = false;
+        });
+        widget.onInitComplete?.call(vm);
+      }).catchError((err) {
+        if (!mounted) return;
+        setState(() {
+          _error = err;
+          _loading = false;
+        });
+        widget.onInitError?.call(err);
       });
-
-      _initialized = true;
     }
   }
 
   @override
   void dispose() {
-    widget.onDispose?.call(_viewModel);
+    if (_viewModel != null) {
+      widget.onDispose?.call(_viewModel);
+    }
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // If it's a ValueListenable, react to changes
-    if (_viewModel is ValueListenable) {
+    final vm = _viewModel;
+
+    if (_error != null && widget.errorBuilder != null) {
+      return widget.errorBuilder!(context, _error!);
+    }
+
+    if (_loading && vm is ForceAsyncInitializableViewModel) {
+      return widget.loadingBuilder?.call(context) ?? const SizedBox.shrink();
+    }
+
+    if (vm is ValueListenable) {
       return ValueListenableBuilder(
-        valueListenable: _viewModel as ValueListenable,
-        builder: (context, _, __) => widget.builder(context, _viewModel),
+        valueListenable: vm as ValueListenable,
+        builder: (context, _, __) => widget.builder(context, vm),
       );
     }
 
-    // Otherwise, just build once
-    return widget.builder(context, _viewModel);
+    return widget.builder(context, vm!);
   }
 }

@@ -12,4 +12,5 @@ workspace:
   - example/scoped_widget_flutter_di
   - example/lifecycle_hooks_di
   - example/viewmodel_lifecycle_flutter_di
+  - example/async_viewmodel_flutter_di
 

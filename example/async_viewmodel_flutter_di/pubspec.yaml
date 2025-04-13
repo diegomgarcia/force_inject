@@ -1,0 +1,23 @@
+name: async_viewmodel_flutter_di
+description: Example demonstrating async ViewModel lifecycle support in ForceInject.
+publish_to: none
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  force_inject:
+    path: ../../packages/force_inject
+  force_inject_flutter:
+    path: ../../packages/force_inject_flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+resolution: workspace
