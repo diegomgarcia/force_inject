@@ -5,8 +5,6 @@ This is a simple Flutter example demonstrating how to use [`force_inject`](https
 > This example intentionally excludes Flutter platform folders to keep the repository clean.  
 > To run it locally, you'll need to generate the platform files manually.
 
----
-
 ## 📦 Setup
 
 1. Open this `example/minimal_flutter_di/` folder in your terminal
@@ -31,8 +29,6 @@ flutter run -d ios            # if connected and provisioned
 flutter run -d <your-device>  # for any connected device
 ```
 
----
-
 ## 📁 Folder Structure
 
 ```
@@ -46,8 +42,6 @@ lib/
 └── main.dart                       # Entry point, DI bootstrapping
 ```
 
----
-
 ## 💡 What It Shows
 
 - How to register a scoped service with ForceInject
@@ -55,16 +49,12 @@ lib/
 - How to bind a ViewModel to a `ValueListenableBuilder` for state updates
 - Separation of DI config, ViewModel, and UI for testability and clarity
 
----
-
 ## 🧪 Ready to Build On
 
 You can use this structure to integrate ForceInject into larger apps with:
 - Modular architecture
 - Feature-based DI
 - Widget-specific lifetimes
-
----
 
 ## 👀 Next Steps
 

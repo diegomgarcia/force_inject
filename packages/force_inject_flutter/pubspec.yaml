@@ -1,5 +1,5 @@
 name: force_inject_flutter
-version: 0.1.0
+version: 0.1.1
 description: Flutter integration for ForceInject – scoped DI made clean.
 
 homepage: https://github.com/diegomgarcia/force_inject

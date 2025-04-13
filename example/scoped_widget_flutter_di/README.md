@@ -6,8 +6,6 @@ This is a Flutter example showing how to use **`forceinject_flutter`** to create
 - `ForceViewModelBuilder<T>` to inject and bind ViewModels from that scope
 - `ValueNotifier` to demonstrate reactive state updates
 
----
-
 ## 📦 Stack
 
 - **Flutter 3.10+**
@@ -15,15 +13,11 @@ This is a Flutter example showing how to use **`forceinject_flutter`** to create
 - [`force_inject`](../../packages/force_inject)
 - [`forceinject_flutter`](../../packages/force_inject_flutter)
 
----
-
 ## 🧪 What It Demonstrates
 
 - Registering a scoped `ViewModel` (`CounterViewModel`)
 - Wrapping the app in a `ForceScopeWidget`
 - Using `ForceViewModelBuilder<CounterViewModel>` to inject and bind the ViewModel
-
----
 
 ## 🚀 Running the App
 
@@ -38,8 +32,6 @@ If you are in a Dart workspace, make sure to run this from the root first:
 dart pub get
 ```
 
----
-
 ## 💡 Code Snippet
 
 ```dart
@@ -52,8 +44,6 @@ ForceScopeWidget(
   ),
 )
 ```
-
----
 
 ## 🧼 Folder Structure
 
