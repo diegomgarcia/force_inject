@@ -7,4 +7,6 @@ export 'src/service_provider.dart';
 export 'src/service_scope.dart';
 export 'src/disposable.dart';
 export 'src/initializable.dart';
+export 'src/force_inject_module.dart';
+
 

@@ -1,6 +1,8 @@
 import 'service_descriptor.dart';
 import 'service_provider.dart';
 import 'service_lifetime.dart';
+import 'force_inject_module.dart';
+
 
 class ServiceCollection {
   final List<ServiceDescriptor> _descriptors = [];
@@ -53,3 +55,11 @@ class ServiceCollection {
     return ServiceProvider(_descriptors);
   }
 }
+
+extension ModuleSupport on ServiceCollection {
+  void addModule(ForceInjectModule module) {
+    module.registerServices(this);
+    module.registerConstructors();
+  }
+}
+

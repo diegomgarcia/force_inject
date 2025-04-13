@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+✨ Features
+- Added **Modular DI** support with `ForceInjectModule` interface
+- Modules can encapsulate service + constructor registration
+- `addModule()` extension simplifies service setup and keeps code modular
+
 ## 0.3.0
 
 ✨ Features
