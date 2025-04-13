@@ -14,6 +14,11 @@ class ConsoleLogger implements Logger {
   }
 }
 
+class FakeLogger implements Logger {
+  @override
+  void log(String message) => print('[FakeLog] $message');
+}
+
 class Greeter {
   final Logger logger;
   Greeter(this.logger);
@@ -112,6 +117,23 @@ void main() {
       final provider = services.buildServiceProvider();
 
       expect(() => provider.get<Logger>(), throwsException);
+    });
+
+    test('ServiceScope can override a service instance', () {
+      final services = ServiceCollection()
+        ..addScoped<Logger, ConsoleLogger>();
+
+      ServiceProvider.registerConstructor<ConsoleLogger>(() => ConsoleLogger(), []);
+      final provider = services.buildServiceProvider();
+
+      final fakeLogger = FakeLogger();
+      final scope = provider.createScope();
+      scope.overrideService<Logger>(fakeLogger);
+
+      final resolved = scope.get<Logger>();
+
+      expect(resolved, isA<FakeLogger>());
+      expect(identical(resolved, fakeLogger), isTrue);
     });
   });
 }

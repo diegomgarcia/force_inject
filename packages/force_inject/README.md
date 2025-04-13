@@ -3,16 +3,19 @@
 [![publisher: diegogarcia.ca](https://img.shields.io/badge/publisher-diegogarcia.ca-blue)](https://pub.dev/publishers/diegogarcia.ca)
 
 
-🛠️ A lightweight, zero-runtime-dependency Dependency Injection (DI) container for Dart.  
+🛠️ A lightweight, zero runtime dependency Dependency Injection (DI) container for Dart.  
 🌌 Inspired by .NET Core and powered by the Force.  
 **This is the Way.**
 
 ## ✨ Features
 
 - Constructor-based dependency injection
-- Support for `singleton`, `transient`, and `scoped lifetimes
-- Zero dependencies — pure Dart
+- Support for `singleton`, `transient`, and `scoped` lifetimes
+- Named & tagged service resolution
+- Scoped service overrides for testing and previews
 - No code generation, no mirrors
+- No runtime dependencies — pure Dart
+- Fully compatible with Flutter, CLI, and server
 - Inspired by C#/.NET Core DI patterns
 - Lightweight, test-friendly, and easy to integrate
 
@@ -73,6 +76,33 @@ scope.dispose(); // clean up when done
 | `transient` | A new instance is created every time       |
 | `scoped`    | One instance per ServiceScope — ideal for screen/request lifetimes |
 
+## 🔧 Advanced Usage
+
+### 🔁 Scoped Overrides
+
+You can override services inside a scope to inject mocks or alternate implementations:
+
+```dart
+final scope = provider.createScope();
+scope.overrideService<Logger>(FakeLogger());
+
+final logger = scope.get<Logger>(); // Returns FakeLogger
+```
+
+You can also provide overrides on creation:
+
+```dart
+final scope = provider.createScope(overrides: {
+  Logger: FakeLogger(),
+});
+```
+
+This is great for testing, previews, or A/B environments.
+
+## 🧪 Testing & Mocks
+
+Check out `test/` for unit tests and real-world setup examples.  
+You can also override services dynamically using `.overrideService()` for fine-grained control.
 
 ## 📦 Why ForceInject?
 
@@ -82,16 +112,22 @@ Dart is an elegant language, but backend structure is still evolving.
 No magic. No mirrors. Just clean, focused architecture.  
 💬 *"When your services are confused, inject them you must."* – Yodart
 
-
 ## 🧪 Examples
 
-This package includes two complete examples you can explore:
+This package includes several complete examples you can explore:
 
-- 🧱 [`minimal_dart_di`](https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_dart_di)  
+- 🧱[`minimal_dart_di`](https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_dart_di)  
   A simple Dart CLI app using ForceInject with singleton and transient services.
 
-- 📱 [`minimal_flutter_di`](https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_flutter_di)  
+- 📱[`minimal_flutter_di`](https://github.com/diegomgarcia/force_inject/tree/main/example/minimal_flutter_di)  
   A clean Flutter app using scoped DI and a `ValueNotifier`-based ViewModel.
+
+- 📱[Scoped Widget DI](https://github.com/diegomgarcia/force_inject/tree/main/example/scoped_widget_flutter_di)
+  A clean Flutter app using Scoped Widget DI.
+
+- 📱[Async ViewModel DI](https://github.com/diegomgarcia/force_inject/tree/main/example/async_viewmodel_flutter_di)
+  A clean Flutter app using Scoped Widget DI with life cycle control with async initialization.
+
 
 To run the Flutter example:
 ```bash
