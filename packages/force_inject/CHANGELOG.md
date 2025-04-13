@@ -1,25 +1,21 @@
 # Changelog
 
-## 0.5.0
-
-✨ Features
-- Added `ServiceScope.overrideService<T>()` and `overrideAllServices()` to support scoped overrides
-- Useful for mocking services in tests, previews, and per-screen contexts
-
-🛠 Improvements
-- Enhanced README with examples, getting started, advanced usage, and Flutter instructions
-- Refined internal architecture for future extensibility
-
-📚 Docs
-- Added full examples section and updated all advanced usage sections
-- Added links to GitHub example projects
-
 ## 0.4.0
 
 ✨ Features
 - Added **Modular DI** support with `ForceInjectModule` interface
 - Modules can encapsulate service + constructor registration
 - `addModule()` extension simplifies service setup and keeps code modular
+- Added `ServiceScope.overrideService<T>()` and `overrideAllServices()` to support scoped overrides
+- Useful for mocking services in tests, previews, and per-screen contexts
+
+  🛠 Improvements
+- Enhanced README with examples, getting started, advanced usage, and Flutter instructions
+- Refined internal architecture for future extensibility
+
+📚 Docs
+- Added full examples section and updated all advanced usage sections
+- Added links to GitHub example projects
 
 ## 0.3.0
 

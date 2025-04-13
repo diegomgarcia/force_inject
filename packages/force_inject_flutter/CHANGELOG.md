@@ -13,6 +13,7 @@
 🔧 Enhancements:
 - `ForceViewModelBuilder` now supports sync + async init detection
 - Maintains full support for `ValueListenable` and `Disposable`
+- Updated force_inject version
 
 ## 0.2.0
 
