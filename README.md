@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="branding/logo_small.png" width="300" alt="force_inject logo" />
+  <img src="branding/logo_small_no_name.png" width="300" alt="force inject logo" />
 </p>
 
-<h1 align="center">🧬 ForceInject</h1>
+<h1 align="center">ForceInject</h1>
 
 <p align="center">
   <em>A modular, zero-runtime-dependency Dependency Injection (DI) system for Dart and Flutter — inspired by .NET Core, and built for clean architecture lovers.</em>
