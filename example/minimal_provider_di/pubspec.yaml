@@ -1,0 +1,18 @@
+name: minimal_provider_di
+description: A minimal Flutter app using force_inject + provider
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  force_inject:
+    path: ../../packages/force_inject
+  force_inject_provider:
+    path: ../../packages/force_inject_provider
+  provider: ^6.1.1
+
+flutter:
+  uses-material-design: true
