@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'di/service_config.dart';
 import 'screens/home_screen.dart';
+import 'package:force_inject/force_inject.dart';
 import 'package:force_inject_provider/force_inject_provider.dart';
 
 void main() {
