@@ -7,7 +7,7 @@ repository: https://github.com/diegomgarcia/force_inject
 issue_tracker: https://github.com/diegomgarcia/force_inject/issues
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.6.0 <4.0.0"
 
 dependencies:
   flutter:
