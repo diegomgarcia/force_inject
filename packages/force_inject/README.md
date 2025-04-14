@@ -1,11 +1,16 @@
-# 🔌 ForceInject
-[![pub package](https://img.shields.io/pub/v/force_inject.svg)](https://pub.dev/packages/force_inject)
-[![publisher: diegogarcia.ca](https://img.shields.io/badge/publisher-diegogarcia.ca-blue)](https://pub.dev/publishers/diegogarcia.ca)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/diegomgarcia/force_inject/main/branding/logo_small_no_name.png" width="300" alt="force inject logo" />
+</p>
 
+<h1 align="center">ForceInject</h1>
 
-🛠️ A lightweight, zero runtime dependency Dependency Injection (DI) container for Dart.  
-🌌 Inspired by .NET Core and powered by the Force.  
-**This is the Way.**
+<p align="center">
+  <em>A lightweight, modular, zero runtime dependency Dependency Injection (DI) system for Dart and Flutter.<br/>
+      Inspired by .NET Core, and built for clean architecture lovers.
+  </em>
+</p>
+
+<p align="center"><strong>This is the Way.</strong></p>
 
 ## ✨ Features
 
