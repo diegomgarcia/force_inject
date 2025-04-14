@@ -1,8 +1,14 @@
-# 🧬 ForceInject
+<p align="center">
+  <img src="branding/logo_small.png" width="300" alt="force_inject logo" />
+</p>
 
-A modular, zero-runtime-dependency Dependency Injection (DI) system for Dart and Flutter — inspired by .NET Core, and built for clean architecture lovers.
+<h1 align="center">🧬 ForceInject</h1>
 
-> **This is the Way.**
+<p align="center">
+  <em>A modular, zero-runtime-dependency Dependency Injection (DI) system for Dart and Flutter — inspired by .NET Core, and built for clean architecture lovers.</em>
+</p>
+
+<p align="center"><strong>This is the Way.</strong></p>
 
 ## 📦 Packages
 

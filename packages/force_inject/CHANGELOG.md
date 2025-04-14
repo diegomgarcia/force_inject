@@ -9,7 +9,7 @@
 - Added `ServiceScope.overrideService<T>()` and `overrideAllServices()` to support scoped overrides
 - Useful for mocking services in tests, previews, and per-screen contexts
 
-  🛠 Improvements
+🛠 Improvements
 - Enhanced README with examples, getting started, advanced usage, and Flutter instructions
 - Refined internal architecture for future extensibility
 
