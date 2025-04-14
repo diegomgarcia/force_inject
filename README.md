@@ -14,10 +14,11 @@
 
 ## 📦 Packages
 
-| Package                                                   | Description |
-|-----------------------------------------------------------|-------------|
-| [`force_inject`](./packages/force_inject)                 | Core DI container with singleton, transient, and scoped lifetimes. Zero dependencies, pure Dart. |
-| [`force_inject_flutter`](./packages/force_inject_flutter) | Flutter integration helpers like `ForceScopeWidget`, `ForceViewModelBuilder<T>`, and more. |
+| Package                                                     | Description |
+|-------------------------------------------------------------|-------------|
+| [`force_inject`](./packages/force_inject)                   | Core DI container with singleton, transient, and scoped lifetimes. Zero dependencies, pure Dart. |
+| [`force_inject_flutter`](./packages/force_inject_flutter)   | Flutter integration helpers like `ForceScopeWidget`, `ForceViewModelBuilder<T>`, and more. |
+| [`force_inject_provider`](./packages/force_inject_provider) | Integrates ForceInject with the `provider` package using scoped `ProviderScope` and reactive `ProviderNotifierBuilder<T>`. |
 
 ## 🚀 Examples
 
