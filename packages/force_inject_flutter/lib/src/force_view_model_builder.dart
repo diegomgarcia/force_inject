@@ -13,11 +13,13 @@ class ForceViewModelBuilder<T> extends StatefulWidget {
   final void Function(T viewModel)? onInitComplete;
   final void Function(Object error)? onInitError;
   final void Function(T viewModel)? onDispose;
+  final void Function(T viewModel)? onPrepareViewModel;
 
   const ForceViewModelBuilder({
     super.key,
     required this.builder,
     this.onDispose,
+    this.onPrepareViewModel,
     this.onInitComplete,
     this.onInitError,
     this.loadingBuilder,
@@ -45,6 +47,8 @@ class _ForceViewModelBuilderState<T> extends State<ForceViewModelBuilder<T>> {
 
     final vm = _viewModel!;
     _initialized = true;
+
+    widget.onPrepareViewModel?.call(vm);
 
     if (vm is ForceInitializableViewModel) {
       vm.init(context);
